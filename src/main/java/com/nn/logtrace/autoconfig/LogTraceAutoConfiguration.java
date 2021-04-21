@@ -5,7 +5,8 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.nn.logtrace.constants.LogTraceConstants;
+import lombok.extern.slf4j.Slf4j;
+
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.slf4j.MDC;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -14,12 +15,12 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import lombok.extern.slf4j.Slf4j;
+import com.nn.logtrace.constants.LogTraceConstants;
 
 /**
  * 描述:
  *
- * @author ningning.cheng
+ * @author stxyg
  * @create 2021/3/23
  */
 @Slf4j
@@ -41,7 +42,7 @@ public class LogTraceAutoConfiguration extends WebMvcConfigurerAdapter {
                 String traceId = UUID.randomUUID().toString();
                 MDC.put(LogTraceConstants.TRACE_ID, traceId);
             } catch (Exception e) {
-                log.warn("设置traceId失败，e={}", ExceptionUtils.getStackTrace(e));
+                LogTraceAutoConfiguration.log.warn("设置traceId失败，e={}", ExceptionUtils.getStackTrace(e));
             }
             return super.preHandle(request, response, handler);
         }
@@ -53,7 +54,7 @@ public class LogTraceAutoConfiguration extends WebMvcConfigurerAdapter {
             try {
                 MDC.remove(LogTraceConstants.TRACE_ID);
             } catch (Exception e) {
-                log.warn("清空traceId失败，e={}", ExceptionUtils.getStackTrace(e));
+                LogTraceAutoConfiguration.log.warn("清空traceId失败，e={}", ExceptionUtils.getStackTrace(e));
             }
         }
     }

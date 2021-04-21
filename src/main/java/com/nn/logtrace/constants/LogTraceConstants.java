@@ -2,7 +2,8 @@ package com.nn.logtrace.constants;
 
 /**
  * 常量
- * @author ningning.cheng
+ * 
+ * @author stxyg
  * @date 2021/1/7 12:11
  */
 public class LogTraceConstants {
