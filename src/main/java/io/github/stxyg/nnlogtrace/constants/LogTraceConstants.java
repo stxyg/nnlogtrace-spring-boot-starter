@@ -1,4 +1,4 @@
-package com.nn.logtrace.constants;
+package io.github.stxyg.nnlogtrace.constants;
 
 /**
  * 常量

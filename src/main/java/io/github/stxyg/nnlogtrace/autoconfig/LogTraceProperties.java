@@ -1,4 +1,4 @@
-package com.nn.logtrace.autoconfig;
+package io.github.stxyg.nnlogtrace.autoconfig;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
