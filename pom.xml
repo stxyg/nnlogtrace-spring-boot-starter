@@ -19,6 +19,13 @@
     <log4j2-version>2.13.3</log4j2-version>
   </properties>
 
+  <contributors>
+    <contributor>
+      <name>stxyg</name>
+      <email>929759861@qq.com</email>
+    </contributor>
+  </contributors>
+
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -71,4 +78,14 @@
     </plugins>
   </build>
 
+  <distributionManagement>
+    <repository>
+      <id>sonatype_release</id>
+      <url>https://s01.oss.sonatype.org/content/repositories/releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>sonatype_snapshots</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
 </project>

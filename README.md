@@ -6,7 +6,7 @@
 2. 引入依赖
 ```
 <dependency>
- <groupId>com.nn</groupId>
+ <groupId>io.github.stxyg</groupId>
   <artifactId>nnlogtrace-spring-boot-starter</artifactId>
   <version>1.0.0-RELEASE</version>
 </dependency>
