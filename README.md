@@ -1,9 +1,8 @@
 用途：
-方便根据traceId查询日志的上下文信息。
+方便根据traceId查询日志的上下文信息，目前只支持WEB请求
 
 使用方法：
-1. 克隆源码到本地，编译打包发布到内部仓库或者下载jar文件使用
-2. 引入依赖
+1. 引入依赖
 ```
 <dependency>
  <groupId>io.github.stxyg</groupId>
