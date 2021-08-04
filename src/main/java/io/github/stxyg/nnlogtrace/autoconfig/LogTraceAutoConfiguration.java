@@ -41,7 +41,7 @@ public class LogTraceAutoConfiguration extends WebMvcConfigurerAdapter {
                 String traceId = UUID.randomUUID().toString();
                 MDC.put(LogTraceConstants.TRACE_ID, traceId);
             } catch (Exception e) {
-                LogTraceAutoConfiguration.log.warn("设置traceId失败，e={}", ExceptionUtils.getStackTrace(e));
+                log.warn("设置traceId失败，e={}", ExceptionUtils.getStackTrace(e));
             }
             return super.preHandle(request, response, handler);
         }
@@ -53,7 +53,7 @@ public class LogTraceAutoConfiguration extends WebMvcConfigurerAdapter {
             try {
                 MDC.remove(LogTraceConstants.TRACE_ID);
             } catch (Exception e) {
-                LogTraceAutoConfiguration.log.warn("清空traceId失败，e={}", ExceptionUtils.getStackTrace(e));
+                log.warn("清空traceId失败，e={}", ExceptionUtils.getStackTrace(e));
             }
         }
     }

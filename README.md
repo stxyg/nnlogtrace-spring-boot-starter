@@ -8,6 +8,7 @@
  <groupId>io.github.stxyg</groupId>
   <artifactId>nnlogtrace-spring-boot-starter</artifactId>
   <version>1.0.0-RELEASE</version>
+
 </dependency>
 ```
 3. application.properties  配置文件配置：
