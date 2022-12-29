@@ -1,11 +1,11 @@
-package com.br.logtrace.annotation;
+package io.github.stxyg.nnlogtrace.annotation;
 
 import org.apache.commons.lang.StringUtils;
 
 /**
  * 登录用户的实现
  * 
- * @author ningning.cheng
+ * @author stxyg
  * @since 2022/11/23
  **/
 public interface LoginUserConfigurer {

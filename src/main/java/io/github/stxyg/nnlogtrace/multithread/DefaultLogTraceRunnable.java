@@ -1,7 +1,7 @@
-package com.br.logtrace.multithread;
+package io.github.stxyg.nnlogtrace.multithread;
 
 /**
- * @author ningning.cheng
+ * @author stxyg
  * @since 2022/11/12
  **/
 public class DefaultLogTraceRunnable extends AbstractLogTraceRunnable {

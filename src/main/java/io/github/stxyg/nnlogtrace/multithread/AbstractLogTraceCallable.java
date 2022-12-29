@@ -1,4 +1,4 @@
-package com.br.logtrace.multithread;
+package io.github.stxyg.nnlogtrace.multithread;
 
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -9,7 +9,7 @@ import org.springframework.util.CollectionUtils;
 /**
  * 增加traceId
  * 
- * @author ningning.cheng
+ * @author stxyg
  * @since 2022/11/12
  **/
 public abstract class AbstractLogTraceCallable<T> implements Callable<T> {

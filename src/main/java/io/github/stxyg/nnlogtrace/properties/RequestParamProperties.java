@@ -1,11 +1,11 @@
-package com.br.logtrace.properties;
+package io.github.stxyg.nnlogtrace.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * web请求参数
  * 
- * @author ningning.cheng
+ * @author stxyg
  * @date 2022/6/17
  **/
 @ConfigurationProperties(prefix = "log.request")
@@ -18,7 +18,7 @@ public class RequestParamProperties {
      * 不拦截路径
      */
     private String[] noFilter = {"/swagger-resources", "/swagger-resources/**", "/v2/api-docs", "/v2/api-docs-ext",
-        "/error", "/doc.html", "/webjars/**", "/ping", "/api/prometheus"};
+        "/error", "/doc.html", "/webjars/**", "/ping"};
 
     public boolean isEnable() {
         return this.enable;

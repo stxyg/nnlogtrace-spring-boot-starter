@@ -1,18 +1,17 @@
-package com.br.logtrace.helper;
+package io.github.stxyg.nnlogtrace.helper;
 
 import java.util.UUID;
 
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.slf4j.MDC;
 
-import com.br.logtrace.constants.LogTraceConstants;
-
+import io.github.stxyg.nnlogtrace.constants.LogTraceConstants;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author ningning.cheng
+ * @author stxyg
  * @since 2022/10/26
  **/
 @Slf4j
@@ -28,7 +27,6 @@ public class LogTraceHelper {
             log.warn("设置traceId失败，e={}", ExceptionUtils.getStackTrace(e));
         }
     }
-
 
     public static void clearLogTrace() {
         try {

@@ -1,4 +1,4 @@
-package com.br.logtrace.annotation;
+package io.github.stxyg.nnlogtrace.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 /**
  * 手动添加logTrace
  * 
- * @author ningning.cheng
+ * @author stxyg
  * @since 2022/10/25
  **/
 @Target(ElementType.METHOD)

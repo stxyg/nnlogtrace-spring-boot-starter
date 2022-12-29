@@ -1,4 +1,4 @@
-package com.br.logtrace.autoconfig;
+package io.github.stxyg.nnlogtrace.autoconfig;
 
 import java.util.Optional;
 
@@ -17,15 +17,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.br.logtrace.annotation.LoginUserConfigurer;
-import com.br.logtrace.properties.RequestParamProperties;
-
+import io.github.stxyg.nnlogtrace.annotation.LoginUserConfigurer;
+import io.github.stxyg.nnlogtrace.properties.RequestParamProperties;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * 描述: web请求参数日志
  *
- * @author ningning.cheng
+ * @author stxyg
  * @create 2022/6/17
  */
 @Slf4j
@@ -86,6 +85,5 @@ public class LogRequestAutoConfiguration {
         }
 
     }
-
 
 }

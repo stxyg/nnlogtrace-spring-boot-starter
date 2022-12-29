@@ -1,9 +1,9 @@
-package com.br.logtrace.multithread;
+package io.github.stxyg.nnlogtrace.multithread;
 
 import org.springframework.scheduling.concurrent.CustomizableThreadFactory;
 
 /**
- * @author ningning.cheng
+ * @author stxyg
  * @since 2022/11/12
  **/
 public class LogTraceThreadFactory extends CustomizableThreadFactory {

@@ -1,4 +1,4 @@
-package com.br.logtrace.autoconfig;
+package io.github.stxyg.nnlogtrace.autoconfig;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,15 +15,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.br.logtrace.annotation.LogTraceAdvice;
-import com.br.logtrace.helper.LogTraceHelper;
-
+import io.github.stxyg.nnlogtrace.annotation.LogTraceAdvice;
+import io.github.stxyg.nnlogtrace.helper.LogTraceHelper;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * 描述:
  *
- * @author ningning.cheng
+ * @author stxyg
  * @create 2021/3/23
  */
 @Slf4j
