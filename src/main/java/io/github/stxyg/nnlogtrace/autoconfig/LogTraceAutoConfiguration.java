@@ -1,19 +1,22 @@
 package io.github.stxyg.nnlogtrace.autoconfig;
 
-import java.util.UUID;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang.exception.ExceptionUtils;
-import org.slf4j.MDC;
+import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import io.github.stxyg.nnlogtrace.constants.LogTraceConstants;
+import io.github.stxyg.nnlogtrace.annotation.LogTraceAdvice;
+import io.github.stxyg.nnlogtrace.helper.LogTraceHelper;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -24,25 +27,37 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Configuration
+@AutoConfigureOrder(1)
 @ConditionalOnProperty(prefix = "logtrace", name = "enable", havingValue = "true")
-public class LogTraceAutoConfiguration extends WebMvcConfigurerAdapter {
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LogTraceInterceptor()).addPathPatterns("/**");
-        super.addInterceptors(registry);
+public class LogTraceAutoConfiguration {
+
+    @Configuration
+    @ConditionalOnClass(WebMvcConfigurerAdapter.class)
+    public class LogTraceConfigurer extends WebMvcConfigurerAdapter {
+
+        @Override
+        public void addInterceptors(InterceptorRegistry registry) {
+            registry.addInterceptor(new LogTraceInterceptor()).addPathPatterns("/**");
+        }
+
+    }
+
+    @Configuration
+    @ConditionalOnMissingClass("org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter")
+    public class LogTraceConfiguration implements WebMvcConfigurer {
+
+        @Override
+        public void addInterceptors(InterceptorRegistry registry) {
+            registry.addInterceptor(new LogTraceInterceptor()).addPathPatterns("/**");
+        }
+
     }
 
     public static class LogTraceInterceptor extends HandlerInterceptorAdapter {
         @Override
         public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-            // 设置traceId
-            try {
-                String traceId = UUID.randomUUID().toString();
-                MDC.put(LogTraceConstants.TRACE_ID, traceId);
-            } catch (Exception e) {
-                log.warn("设置traceId失败，e={}", ExceptionUtils.getStackTrace(e));
-            }
+            LogTraceHelper.putLogTrace();
             return super.preHandle(request, response, handler);
         }
 
@@ -50,11 +65,13 @@ public class LogTraceAutoConfiguration extends WebMvcConfigurerAdapter {
         public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
             Exception ex) {
             // 清空traceId
-            try {
-                MDC.remove(LogTraceConstants.TRACE_ID);
-            } catch (Exception e) {
-                log.warn("清空traceId失败，e={}", ExceptionUtils.getStackTrace(e));
-            }
+            LogTraceHelper.clearLogTrace();
         }
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(LogTraceAdvice.class)
+    public LogTraceAdvice logTraceAdvice() {
+        return new LogTraceAdvice();
     }
 }

@@ -7,8 +7,6 @@ package io.github.stxyg.nnlogtrace.constants;
  * @date 2021/1/7 12:11
  */
 public class LogTraceConstants {
-    private LogTraceConstants() {}
-
     public static final String TRACE_ID = "traceId";
 
 }

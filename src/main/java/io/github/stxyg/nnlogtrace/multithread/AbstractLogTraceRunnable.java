@@ -1,0 +1,35 @@
+package io.github.stxyg.nnlogtrace.multithread;
+
+import java.util.Map;
+
+import org.slf4j.MDC;
+import org.springframework.util.CollectionUtils;
+
+/**
+ * 增加traceId
+ * 
+ * @author stxyg
+ * @since 2022/11/12
+ **/
+public abstract class AbstractLogTraceRunnable implements Runnable {
+    private final Map<String, String> copyOfContextMap = MDC.getCopyOfContextMap();
+
+    @Override
+    public void run() {
+        if (!CollectionUtils.isEmpty(this.copyOfContextMap)) {
+            MDC.setContextMap(this.copyOfContextMap);
+        }
+
+        try {
+            this.logTraceRun();
+        } finally {
+            MDC.clear();
+        }
+
+    }
+
+    /**
+     * 要实现的线程run方法
+     */
+    public abstract void logTraceRun();
+}
