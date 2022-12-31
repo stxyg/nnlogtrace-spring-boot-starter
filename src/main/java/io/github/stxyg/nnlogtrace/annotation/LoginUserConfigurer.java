@@ -12,14 +12,14 @@ public interface LoginUserConfigurer {
     /**
      * 获得当前登录用户（中文）
      * 
-     * @return
+     * @return 登录用户中文名
      */
     String getCurrentName();
 
     /**
      * 获得当前登录用户（英文）
      *
-     * @return
+     * @return 登录用户英文名
      */
     default String getCurrentUserName() {
         return StringUtils.EMPTY;

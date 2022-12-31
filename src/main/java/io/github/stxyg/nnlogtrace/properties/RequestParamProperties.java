@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * web请求参数
  * 
  * @author stxyg
- * @date 2022/6/17
+ * @since 2022/6/17
  **/
 @ConfigurationProperties(prefix = "log.request")
 public class RequestParamProperties {

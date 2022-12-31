@@ -30,6 +30,8 @@ public abstract class AbstractLogTraceCallable<T> implements Callable<T> {
 
     /**
      * 要实现的线程call方法
+     * 
+     * @return 同Callable.call一致
      */
     public abstract T logTraceCall();
 }
