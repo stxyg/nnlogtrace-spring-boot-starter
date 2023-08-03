@@ -1,3 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  io.github.stxyg.nnlogtrace.autoconfig.LogTraceAutoConfiguration,\
-  io.github.stxyg.nnlogtrace.autoconfig.LogRequestAutoConfiguration

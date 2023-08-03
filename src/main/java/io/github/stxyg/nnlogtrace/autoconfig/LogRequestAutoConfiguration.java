@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -30,7 +29,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Configuration
 @AutoConfigureOrder(2)
-@ConditionalOnProperty(prefix = "log.request", name = "enable", havingValue = "true")
 public class LogRequestAutoConfiguration {
     @Autowired(required = false)
     private LoginUserConfigurer loginUserConfigurer;
