@@ -39,9 +39,18 @@ log.request.enable=true
 ```java
 import io.github.stxyg.nnlogtrace.annotation.EnableLogRequest;
 import io.github.stxyg.nnlogtrace.annotation.EnableLogTrace;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @EnableLogTrace
 @EnableLogRequest
+@SpringBootApplication
+public class XxxxApplication {
+
+   public static void main(String[] args) {
+      SpringApplication.run(NnlogtraceExampleApplication.class, args);
+   }
+
+}
 ```
 
 3. logback.xml 配置参数添加 %X{traceId}
