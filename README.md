@@ -1,11 +1,11 @@
-![](https://img.shields.io/badge/version-2.0.1-red)
+![](https://img.shields.io/badge/version-2.0.3-red)
 ![](https://img.shields.io/badge/author-stxyg-yellow)
 ![](https://img.shields.io/badge/SpringBoot-1.5.13+-blue)
 
 ## 用途
 
 1. 输出的日志自动添加traceId前缀或者后缀，便于追踪显示一个独立完整的请求日志链。
-2. 前缀或者后缀形如：[traceId-73a2a686-7d1a-44c3-a872-ad537853fa51]
+2. 前缀或者后缀形如：[traceId-73a2a686-7d1a-44c3-a872-ad537853fa51]或者[traceId-73a2a6867d1a44c3a872ad537853fa51]
 3. 打印请求url及操作人。
 
 ## 使用方法
@@ -23,13 +23,25 @@
 </dependency>
 ```
 
-2. application.properties 配置文件配置：
+2. 开启
+
+配置开启（2.0.2及之前使用）：
 
 ```properties
 # 开启traceId打印
 logtrace.enable=true
 # 开启请求url，请求人的打印
 log.request.enable=true
+```
+
+注解开启（2.0.3及之后使用）：
+
+```java
+import io.github.stxyg.nnlogtrace.annotation.EnableLogRequest;
+import io.github.stxyg.nnlogtrace.annotation.EnableLogTrace;
+
+@EnableLogTrace
+@EnableLogRequest
 ```
 
 3. logback.xml 配置参数添加 %X{traceId}
@@ -143,4 +155,3 @@ public class LoginUserConfig implements LoginUserConfigurer {
 ```
 <property name="ENCODER_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [${APP_NAME}] [%thread] %-5level [%logger] -%msg[traceId-%X{traceId}]%n"/>
 ```
-
