@@ -24,3 +24,4 @@ logs/
 /nbdist/
 /.nb-gradle/
 /speed/
+/.github/
