@@ -21,12 +21,13 @@ public class LogTraceHelper {
     public static void putLogTrace() {
         // 设置traceId
         try {
-            String traceId = UUID.randomUUID().toString();
+            String traceId = UUID.randomUUID().toString().replaceAll("-", "");
             MDC.put(LogTraceConstants.TRACE_ID, traceId);
         } catch (Exception e) {
             log.warn("设置traceId失败，e={}", ExceptionUtils.getStackTrace(e));
         }
     }
+
 
     public static void clearLogTrace() {
         try {
